@@ -1,0 +1,45 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>Contact Groups</mat-card-title>
+    </mat-card-header>
+  
+    <mat-card-content>
+      <div *ngFor="let group of contactGroups">
+        <mat-card class="group-card">
+          <mat-card-header>
+            <mat-card-title>{{ group.groupName}}</mat-card-title>
+            <mat-card-subtitle>
+              Contacts: {{ group?.contacts?.length }}
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <ul>
+              <li *ngFor="let contact of group.contacts">
+                {{ contact.firstName }} {{ contact.lastName }}
+              </li>
+            </ul>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-fab color="primary" (click)="editGroup(group)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-fab color="warn" (click)="deleteGroup(group)">
+              <mat-icon>delete</mat-icon>
+            </button>
+            <button mat-fab color="accent" (click)="addContactToGroup(group)">
+              <mat-icon>person_add</mat-icon>
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  
+  <mat-card class="add-group-card">
+    <mat-card-content>
+      <button mat-fab class="add-group-button" (click)="openAddGroupDialog()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </mat-card-content>
+  </mat-card>
+  

@@ -1,0 +1,14 @@
+<div *ngFor="let contact of contacts" class="contact-item" (click)="navigateToContact(contact.idContact)">
+    <div class="contact-content">
+      <mat-icon class="contact-icon">person</mat-icon> <!-- Use "person" or "account_circle" as the icon -->
+      <span class="contact-name">{{ contact.firstName }} {{ contact.lastName }}</span>
+    </div>
+    <mat-icon class="arrow-icon">keyboard_arrow_right</mat-icon>
+</div>
+  
+
+
+
+  <button mat-fab color="accent" class="add-contact-button" (click)="navigateToAddContact()" >
+    <mat-icon>add</mat-icon>
+  </button>

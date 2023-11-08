@@ -1,0 +1,30 @@
+<mat-card>
+    <!-- General Details -->
+    <mat-card-title>General Details</mat-card-title>
+    <mat-card-content>
+      <mat-icon>account_circle</mat-icon>
+      <h2>{{ contact?.firstName }} {{ contact?.lastName }}</h2>
+      <p>Email: {{ contact?.email }}</p>
+    </mat-card-content>
+  
+    <!-- Address -->
+    <mat-card-title>Address</mat-card-title>
+    <mat-card-content>
+      <mat-icon>location_on</mat-icon>
+      <p>{{ contact?.address?.street }}</p>
+      <p>{{ contact?.address?.city }}, {{ contact?.address?.zip }}</p>
+      <p>{{ contact?.address?.country }}</p>
+    </mat-card-content>
+  
+    <!-- Phone Numbers -->
+    <mat-card-title>Phone Numbers</mat-card-title>
+    <mat-card-content>
+      <mat-icon>phone</mat-icon>
+      <ul>
+        <li *ngFor="let phone of contact?.phones">
+          {{ phone.phoneKind }}: {{ phone.phoneNumber }}
+        </li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
+  

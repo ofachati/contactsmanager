@@ -1,14 +1,27 @@
-<div *ngFor="let contact of contacts" class="contact-item" (click)="navigateToContact(contact.idContact)">
+<!-- Add a search input field with mat-input and mat-icon -->
+<mat-card class="custom-card mat-elevation-z4">
+  <!-- Title for the card -->
+  <mat-card-title>Contact List</mat-card-title>
+
+  <br>
+  <mat-form-field appearance="outline">
+    <mat-label>Search by Name</mat-label>
+    <input matInput [(ngModel)]="searchTerm" placeholder="Search..." (input)="applyFilter()">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+
+  <!-- Display contacts based on the filtered list -->
+  <div *ngFor="let contact of filteredContacts" class="contact-item" (click)="navigateToContact(contact.idContact)">
     <div class="contact-content">
-      <mat-icon class="contact-icon">person</mat-icon> <!-- Use "person" or "account_circle" as the icon -->
+      <mat-icon class="contact-icon">person</mat-icon>
       <span class="contact-name">{{ contact.firstName }} {{ contact.lastName }}</span>
     </div>
     <mat-icon class="arrow-icon">keyboard_arrow_right</mat-icon>
-</div>
-  
+  </div>
+</mat-card>
 
 
 
-  <button mat-fab color="accent" class="add-contact-button" (click)="navigateToAddContact()" >
-    <mat-icon>add</mat-icon>
-  </button>
+<button mat-fab color="accent" class="add-contact-button" (click)="navigateToAddContact()">
+  <mat-icon>add</mat-icon>
+</button>

@@ -1,1 +1,53 @@
-<p>group works!</p>
+<!-- group.component.html -->
+<mat-card class="group-card">
+    <mat-card-header>
+      <mat-form-field appearance="outline" >
+        <mat-icon matPrefix>group</mat-icon>
+        <input matInput [(ngModel)]="group.groupName" placeholder="Group Name" [readonly]="!editMode" >
+      </mat-form-field>
+    </mat-card-header>
+  
+    <mat-card-content>
+        <!-- Add a title before the list -->
+<h4>Contact List</h4>
+
+ <!-- MatSelect for selecting contacts -->
+ <mat-form-field *ngIf="editMode">
+    <mat-label>Add Contact</mat-label>
+    <mat-select [(ngModel)]="selectedContactId" (selectionChange)="addContactToGroup()">
+      <mat-option *ngFor="let contact of allContacts" [value]="contact.idContact">
+        {{ contact.firstName }} {{ contact.lastName }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+<ul class="custom-list">
+
+  <li *ngFor="let contact of group.contacts; let i = index" class="contact-item">
+    <!-- Color the icon with gray -->
+    <mat-icon class="contact-icon" style="color: gray;">account_circle</mat-icon>
+    <span>{{ contact.firstName }} {{ contact.lastName }}</span>
+    <button mat-icon-button *ngIf="editMode" color="warn" (click)="deleteContact(i)">
+      <!-- Color the delete icon with gray -->
+      <mat-icon >delete</mat-icon>
+    </button>
+  </li>
+</ul>
+
+          
+  
+     
+  
+     
+    </mat-card-content>
+  
+    <mat-card-actions>
+      <button mat-fab color="primary" (click)="toggleEditMode()">
+        <mat-icon>{{ editMode ? 'save' : 'edit' }}</mat-icon>
+      </button>
+      <button mat-fab color="warn" (click)="deleteGroup()">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  

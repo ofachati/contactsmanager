@@ -26,6 +26,8 @@ import { AddContactComponent } from './components/add-contact/add-contact.compon
 import {MatDialogModule} from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddGroupComponent } from './components/add-group/add-group.component'; // Import ReactiveFormsModule
+import { GroupComponent } from './components/group/group.component';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -39,7 +41,8 @@ import { AddGroupComponent } from './components/add-group/add-group.component'; 
     HeaderComponent,
     FooterComponent,
     AddContactComponent,
-    AddGroupComponent
+    AddGroupComponent,
+    GroupComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,8 @@ import { AddGroupComponent } from './components/add-group/add-group.component'; 
     MatIconModule,
     HttpClientModule,
     MatDialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]

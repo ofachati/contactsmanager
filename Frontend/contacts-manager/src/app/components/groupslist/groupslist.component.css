@@ -3,11 +3,17 @@
     max-width: 400px;
   }
   
-  .add-group-card {
-    text-align: center;
-  }
+
   
+
   .add-group-button {
-    margin: 16px;
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
   }
-  
+
+  .custom-card {
+    width: 80%;
+    margin: 20px auto 0; /* Add 20px space on the top, center horizontally */
+    padding: 16px;
+  }

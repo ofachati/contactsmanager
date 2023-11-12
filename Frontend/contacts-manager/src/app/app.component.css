@@ -1,0 +1,25 @@
+
+/*
+
+.container {
+    height: 100vh;
+  }
+  
+  .full-height-container {
+    display: flex;
+  }
+  
+  .sidenav {
+    width: 175px; 
+  }
+  
+  .full-height {
+    height: 100%;
+  }
+  
+  */
+
+  .non-editable-field .mat-form-field-outline-start,
+.non-editable-field .mat-form-field-outline-end {
+  border-color: transparent; /* Set border color to transparent for non-editable fields */
+}

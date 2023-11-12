@@ -18,8 +18,8 @@ component: HomeComponent
       { path: 'group', component: GroupslistComponent },
   { path: 'contact/:id', component: ContactComponent },
 
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: '**', redirectTo: '/login' }
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', redirectTo: '/home' }
 
 ];
 

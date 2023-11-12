@@ -1,0 +1,15 @@
+.custom-list {
+    list-style: none; /* Remove default list styles */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+  }
+
+  .contact-item {
+    display: flex; /* Use flexbox to align icon, name, and button horizontally */
+    align-items: center; /* Center items vertically */
+    margin-bottom: 8px; /* Add some spacing between items */
+  }
+
+  .contact-icon {
+    margin-right: 8px; /* Add spacing between icon and name */
+  }

@@ -33,15 +33,12 @@ public class DAOContactGroup implements IDAOContactGroup {
         try {
             tx.begin();
 
-            // Ensure contacts set is initialized
             if (contactGroup.getContacts() == null) {
                 contactGroup.setContacts(new HashSet<>());
             }
 
-            // Attach contacts to the persistence context
             Set<Contact> attachedContacts = new HashSet<>();
             for (Contact contact : contactGroup.getContacts()) {
-                // Add a check to ensure idContact is not zero (assuming zero is not a valid ID)
                 if (contact.getIdContact() != 0) {
                     attachedContacts.add(em.find(Contact.class, contact.getIdContact()));
                 }

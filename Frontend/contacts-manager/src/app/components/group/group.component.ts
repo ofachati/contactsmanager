@@ -6,6 +6,7 @@ import { ContactGroupService } from 'src/app/services/contact-group.service';
 import { AddGroupComponent } from '../add-group/add-group.component';
 import { ContactService } from 'src/app/services/contact.service';
 import { Contact } from 'src/app/models/Contact';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-group',
@@ -23,7 +24,8 @@ export class GroupComponent implements OnInit {
   constructor(
     private groupService: ContactGroupService,
     private contactService: ContactService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
   ) {}
  
 
@@ -51,6 +53,7 @@ export class GroupComponent implements OnInit {
   deleteContact(index: number): void {
     // Implement delete contact logic
     this.group.contacts!.splice(index, 1);
+    // Navigate to the current route to trigger a reload
   }
 
   deleteGroup(): void {
@@ -59,8 +62,15 @@ export class GroupComponent implements OnInit {
     this.groupService.deleteContactGroup(groupId).subscribe((response) => {
       // Handle the response as needed, e.g., show a success message
       console.log('Group deleted:', response);
-      // Notify the parent component about the deletion
+      // Navigate to the current route to trigger a reload
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+      const currentUrl = this.router.url + '?';
+      this.router.navigateByUrl(currentUrl).then(() => {
+        this.router.navigated = false;
+        this.router.navigate([this.router.url]);});
+
     });
+
   }
 
   addContactToGroup(): void {

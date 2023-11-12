@@ -22,12 +22,12 @@ public class JPQLservlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        // Example usage of findContactsWithMostPhoneNumbers method
+        // Example usage of findContactsWithMostPhoneNumbers 
         List<Contact> contactsWithMostPhoneNumbers = findContactsWithMostPhoneNumbers();
         printContacts(response, "Contacts with the most phone numbers:", contactsWithMostPhoneNumbers);
 
-        // Example usage of findContactsByCity method
-        String city = "Paris"; // Replace with the desired city
+        // Example usage findContactsByCity 
+        String city = "Paris"; 
         List<Contact> contactsInCity = findContactsByCity(city);
         printContacts(response, "Contacts in " + city + ":", contactsInCity);
     }

@@ -19,6 +19,7 @@ import com.lip6.entities.Contact;
 import com.lip6.entities.ContactGroup;
 import com.lip6.entities.PhoneNumber;
 import com.lip6.services.ContactService;
+import com.lip6.services.IContactService;
 
 /**
  * Servlet implementation class CreateContactServlet
@@ -49,7 +50,7 @@ public class CreateContactServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	  
-		
+		//cette classe just pour demontrer 
 		
 	      /*
 	  String fname=request.getParameter("fname");
@@ -75,57 +76,14 @@ public class CreateContactServlet extends HttpServlet {
 	    contact.setLastName(lname);
 	    contact.setEmail(email);
 	    
-	    // Capture optional properties: Address, PhoneNumbers, and ContactGroups
-        //Optional<Address> addressOptional = Optional.ofNullable((Address) context.getBean("address"));
-        //Optional<Set<PhoneNumber>> phoneNumbersOptional = Optional.ofNullable((Set<PhoneNumber>) context.getBean("phoneNumber"));
-        //Optional<Set<ContactGroup>> contactGroupsOptional = Optional.ofNullable((Set<ContactGroup>) context.getBean("contactGroup"));
-
-        // Set optional properties if present
-        //addressOptional.ifPresent(contact::setAddress);
 	    
         contact.setAddress(null);
         contact.setPhones(null);
         contact.setContactGroups(null);
 
-        //phoneNumbersOptional.ifPresent(contact::setPhones);
-        //contactGroupsOptional.ifPresent(contact::setContactGroups);
-
-
-	    // Capture phone numbers and contact groups data from the form
-	    //String phoneNumbersInput = request.getParameter("phoneNumbers");
-	    //String contactGroupsInput = request.getParameter("contactGroups");
-
-	    // Process and split phone numbers and contact groups if provided
-	    //Set<PhoneNumber> phoneNumbers = new HashSet<>();
-	    //Set<ContactGroup> contactGroups = new HashSet<>();
-/*
-	    if (!phoneNumbersInput.isEmpty()) {
-	        String[] phoneNumberArray = phoneNumbersInput.split(",");
-	        for (String phoneNumberStr : phoneNumberArray) {
-	            PhoneNumber phoneNumber = context.getBean(PhoneNumber.class);
-	            phoneNumber.setPhoneNumber(phoneNumberStr.trim()); // Trim spaces
-	            phoneNumbers.add(phoneNumber);
-	        }
-	    }
-
-	    if (!contactGroupsInput.isEmpty()) {
-	        String[] contactGroupsArray = contactGroupsInput.split(",");
-	        for (String contactGroupName : contactGroupsArray) {
-	            ContactGroup contactGroup = context.getBean(ContactGroup.class);
-	            contactGroup.setGroupName(contactGroupName.trim()); // Trim spaces
-	            contactGroups.add(contactGroup);
-	        }
-	    }
-
-	    // Set phone numbers and contact groups in the contact
-	    contact.setPhones(phoneNumbers);
-	    contact.setContactGroups(contactGroups);
-*/
 
 	    // Retrieve the ContactService from the application context
-	    ContactService contactService = context.getBean(ContactService.class);
-
-	    // Call the createContact method to add the contact
+	    IContactService contactService = context.getBean(ContactService.class);
 	    contactService.createContact(contact);
 	    
 	    

@@ -101,7 +101,7 @@ public class DAOContact implements IDAOContact{
             EntityTransaction tx = em.getTransaction();
             tx.begin();
 
-            // Merge the detached entity to make it managed
+            // detached to manageeeed
             Contact managedContact = em.merge(contact);
 
             // Set the contact for each phone number
@@ -116,7 +116,7 @@ public class DAOContact implements IDAOContact{
                 em.persist(managedContact.getAddress()); // Persist the address
             }
 
-            // Merge the updated contact
+            // Merge  updated contact
             em.merge(managedContact);
 
             tx.commit();
@@ -167,7 +167,7 @@ public class DAOContact implements IDAOContact{
     public List<Contact> findContactsWithMostPhoneNumbers() {
         EntityManager em = JpaUtil.getEmf().createEntityManager();
         return em.createQuery("SELECT c FROM Contact c LEFT JOIN FETCH c.phones p GROUP BY c ORDER BY COUNT(p) DESC", Contact.class)
-                 .setMaxResults(1) // Limit the result to one record with the most phone numbers
+                 .setMaxResults(1) 
                  .getResultList();
     }
 

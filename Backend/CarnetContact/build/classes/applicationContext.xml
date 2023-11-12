@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+        
+<!--   
+   <context:component-scan base-package="com.lip6.services.*" />
+    <context:annotation-config/> -->
+
+<bean id="daoContact" class="com.lip6.daos.DAOContact"/>
+
+ <!-- injection par constructeur -->
+    <bean id="contactService" class="com.lip6.services.ContactService">
+        <constructor-arg ref="daoContact" />
+    </bean>
+
+   
+<bean  id="contact"  class="com.lip6.entities.Contact" >
+    <property name="idContact" value="0" />
+    <property name="firstName" value="" />
+    <property name="lastName" value="" />
+    <property name="email" value="" />
+    <property name="address" ref="address" /> <!-- Reference to the Address bean -->
+    <property name="phones">
+        <set>
+            <!-- Define PhoneNumbers here if needed -->
+            <ref bean="phoneNumber" />
+        </set>
+    </property>
+    <property name="contactGroups">
+        <set>
+            <!-- Define ContactGroups here if needed -->
+            <ref bean="contactGroup" />
+        </set>
+    </property>
+    
+</bean>
+
+
+<bean  id="address" class="com.lip6.entities.Address"  >
+    <property name="idAddress" value="0" />
+    <property name="street" value="" />
+    <property name="city" value="" />
+    <property name="zip" value="" />
+    <property name="country" value="" />
+    <property name="contact" ref="contact"/> <!-- Reference to the Contact bean -->
+</bean>
+
+
+<bean id="phoneNumber" class="com.lip6.entities.PhoneNumber"  >
+    <property name="idPhoneNumber" value="0" />
+    <property name="phoneKind" value="" />
+    <property name="phoneNumber" value="" />
+    <!-- Reference to the Contact bean -->
+    <property name="contact" ref="contact" />
+</bean>
+
+<bean id="contactGroup" class="com.lip6.entities.ContactGroup" >
+    <property name="groupId" value="0" />
+    <property name="groupName" value="" />
+    <!-- Contacts will be managed dynamically -->
+</bean>
+
+
+
+
+<bean id="contacttest" class="com.lip6.entities.Contact">
+    <property name="idContact" value="0" />
+    <property name="firstName" value="XmlBean" />
+    <property name="lastName" value="Test" />
+    <property name="email" value="xml.beantest@example.com" />
+    <property name="address" ref="addresstest" />
+    <property name="phones">
+        <set>
+            <ref bean="phoneNumbertest1" />
+            <ref bean="phoneNumbertest2" />
+        </set>
+    </property>
+    <property name="contactGroups">
+        <set>
+            <ref bean="contactGrouptest1" />
+            <ref bean="contactGrouptest2" />
+        </set>
+    </property>
+</bean>
+
+<bean id="addresstest" class="com.lip6.entities.Address">
+    <property name="idAddress" value="0" />
+    <property name="street" value="123 Main Street" />
+    <property name="city" value="Cityville" />
+    <property name="zip" value="12345" />
+    <property name="country" value="Countryland" />
+    <property name="contact" ref="contacttest" />
+</bean>
+
+<bean id="phoneNumbertest1" class="com.lip6.entities.PhoneNumber">
+    <property name="idPhoneNumber" value="0" />
+    <property name="phoneKind" value="Mobile" />
+    <property name="phoneNumber" value="123-456-7890" />
+    <property name="contact" ref="contacttest" />
+</bean>
+
+<bean id="phoneNumbertest2" class="com.lip6.entities.PhoneNumber">
+    <property name="idPhoneNumber" value="0" />
+    <property name="phoneKind" value="Home" />
+    <property name="phoneNumber" value="987-654-3210" />
+    <property name="contact" ref="contacttest" />
+</bean>
+
+<bean id="contactGrouptest1" class="com.lip6.entities.ContactGroup">
+    <property name="groupId" value="0" />
+    <property name="groupName" value="Friends" />
+     <property name="contacts">
+        <set>
+            <ref bean="contacttest" />
+        </set>
+    </property>
+</bean>
+
+<bean id="contactGrouptest2" class="com.lip6.entities.ContactGroup">
+    <property name="groupId" value="0" />
+    <property name="groupName" value="Work" />
+    <property name="contacts">
+        <set>
+            <ref bean="contacttest" />
+        </set>
+    </property>
+</bean>
+
+
+</beans>

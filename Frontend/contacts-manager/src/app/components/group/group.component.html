@@ -1,7 +1,8 @@
 <!-- group.component.html -->
 <mat-card class="group-card mat-elevation-z12" style="background-color: rgb(234, 243, 248)">
     <mat-card-header>
-      <mat-form-field appearance="outline" >
+      <mat-form-field appearance="outline" style="width: 80%;" >
+        <mat-label>Group name</mat-label>
         <mat-icon matPrefix>group</mat-icon>
         <input matInput [(ngModel)]="group.groupName" placeholder="Group Name" [readonly]="!editMode" >
       </mat-form-field>
@@ -29,7 +30,7 @@
     <span>{{ contact.firstName }} {{ contact.lastName }}</span>
     <button mat-icon-button *ngIf="editMode" color="warn" (click)="deleteContact(i)">
       <!-- Color the delete icon with gray -->
-      <mat-icon >delete</mat-icon>
+      <mat-icon >cancel</mat-icon>
     </button>
   </li>
 </ul>
@@ -42,10 +43,10 @@
     </mat-card-content>
   
     <mat-card-actions>
-      <button mat-fab color="primary" (click)="toggleEditMode()">
+      <button mat-icon-button color="primary" (click)="toggleEditMode()" style="margin-right: 20px;">
         <mat-icon>{{ editMode ? 'save' : 'edit' }}</mat-icon>
       </button>
-      <button mat-fab color="warn" (click)="deleteGroup()">
+      <button mat-icon-button color="warn" (click)="deleteGroup()" style="margin-right: 20px;">
         <mat-icon>delete</mat-icon>
       </button>
     </mat-card-actions>

@@ -8,12 +8,12 @@
 
   .add-group-button {
     position: fixed;
-    bottom: 16px;
-    right: 16px;
+    bottom: 30px;
+    right: 40px;
   }
 
   .custom-card {
-    width: 80%;
+    width: 50%;
     margin: 20px auto 0; /* Add 20px space on the top, center horizontally */
     padding: 16px;
     min-height: 100%;

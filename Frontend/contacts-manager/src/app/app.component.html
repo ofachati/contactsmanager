@@ -1,8 +1,9 @@
 <mat-sidenav-container class="container full-height-container">
-  <mat-sidenav #sidenav class="sidenav full-height" mode="side" opened="true" style="background-color: rgb(175, 175, 175);">
+  <mat-sidenav #sidenav class="sidenav full-height" mode="side" opened="true" style="background-color: rgb(226, 221, 221); min-width: 15%;">
     <mat-nav-list>
-      <a mat-list-item routerLink="contact">Contacts</a>
-      <a mat-list-item routerLink="group">Groups</a>
+      
+      <a mat-list-item routerLink="contact"><mat-icon matPrefix>person</mat-icon> Contacts</a>
+      <a mat-list-item routerLink="group"><mat-icon matPrefix>people</mat-icon> Groups</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content style="height: 100vh;">

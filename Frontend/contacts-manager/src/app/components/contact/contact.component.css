@@ -4,3 +4,8 @@
     padding: 16px;
   }
   
+  .custom-list {
+    list-style: none; /* Remove default list styles */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+  }

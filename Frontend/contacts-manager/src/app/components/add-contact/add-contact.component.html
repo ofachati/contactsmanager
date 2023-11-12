@@ -1,18 +1,23 @@
+<h2 mat-dialog-title>Create a new contact</h2>
+
 <mat-dialog-content>
+  <br>
     <form [formGroup]="contactForm">
-      <mat-form-field class="example-full-width" appearance="outline">
+      <mat-form-field class="example-full-width" appearance="outline" style="margin-right: 20px;">
+        <mat-label>First Name</mat-label>
         <mat-icon matPrefix>person</mat-icon>
         <input matInput placeholder="First Name" formControlName="firstName" required>
       </mat-form-field>
   
       <mat-form-field class="example-full-width" appearance="outline">
         <mat-icon matPrefix>person</mat-icon>
+        <mat-label>Last Name</mat-label>
         <input matInput placeholder="Last Name" formControlName="lastName" required>
       </mat-form-field>
   
-      <mat-form-field class="example-full-width" appearance="outline">
+      <mat-form-field class="example-full-width" appearance="outline" style="width: 100%;">
         <mat-icon matPrefix>email</mat-icon>
-
+        <mat-label>Email</mat-label>
         <input matInput placeholder="Email" formControlName="email" required>
       </mat-form-field>
     </form>

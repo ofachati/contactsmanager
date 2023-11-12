@@ -30,7 +30,7 @@ export class ContactslistComponent implements OnInit {
 
   navigateToAddContact() {
     const dialogRef = this.dialog.open(AddContactComponent, {
-      width: '400px',
+      width: '564px',
     });
 
     dialogRef.afterClosed().subscribe((result) => {

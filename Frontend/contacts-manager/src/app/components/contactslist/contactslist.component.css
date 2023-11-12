@@ -47,5 +47,6 @@
     width: 80%;
     margin: 20px auto 0; /* Add 20px space on the top, center horizontally */
     padding: 16px;
+    min-height: 100%;
   }
   

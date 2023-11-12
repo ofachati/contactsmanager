@@ -7,6 +7,7 @@
     <br>
     <div *ngFor="let group of contactGroups">
       <app-group [group]="group"></app-group>
+      <br>
     </div>
   </mat-card-content>
 </mat-card>
@@ -16,3 +17,4 @@
 <button mat-fab class="add-group-button" (click)="openAddGroupDialog()">
   <mat-icon>add</mat-icon>
 </button>
+<br>

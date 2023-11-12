@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ContactGroup } from 'src/app/models/ContactGroup';
 import { ContactGroupService } from 'src/app/services/contact-group.service';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,7 +14,8 @@ import { ContactGroupService } from 'src/app/services/contact-group.service';
 export class AddGroupComponent {
   newGroupName: string = '';
 
-  constructor(public dialogRef: MatDialogRef<AddGroupComponent>, private groupService: ContactGroupService) {}
+  constructor(public dialogRef: MatDialogRef<AddGroupComponent>, private groupService: ContactGroupService,
+    private router: Router) {}
 
   onSaveClick(): void {
     if (this.newGroupName.trim() !== '') {
@@ -25,6 +28,12 @@ export class AddGroupComponent {
         // Handle the response as needed (e.g., add the group to your group list).
         console.log('Group created:', createdGroup);
         this.dialogRef.close(createdGroup);
+         // Navigate to the current route to trigger a reload
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+      const currentUrl = this.router.url + '?';
+      this.router.navigateByUrl(currentUrl).then(() => {
+        this.router.navigated = false;
+        this.router.navigate([this.router.url]);});
       }, error => {
         // Handle the error here if the group creation fails.
         console.error('Error creating group:', error);

@@ -1,19 +1,23 @@
 <mat-sidenav-container class="container full-height-container">
-  <mat-sidenav #sidenav class="sidenav full-height" mode="side" opened="true" style="background-color: gray;">
+  <mat-sidenav #sidenav class="sidenav full-height" mode="side" opened="true" style="background-color: rgb(175, 175, 175);">
     <mat-nav-list>
       <a mat-list-item routerLink="contact">Contacts</a>
       <a mat-list-item routerLink="group">Groups</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content style="height: 100vh;">
-    <mat-toolbar color="primary" style="width:100%;">
+    <mat-toolbar color="primary" style="width:100%; background-color: rgb(90, 15, 15);">
       <button mat-icon-button (click)="sidenav.toggle()" aria-label="Toggle Menu">
         <mat-icon>menu</mat-icon>
       </button>
       <span>Contacts Manager</span>
     </mat-toolbar>
     <router-outlet></router-outlet>
+    <app-footer></app-footer>
+
   </mat-sidenav-content>
 </mat-sidenav-container>
+
+
 
 

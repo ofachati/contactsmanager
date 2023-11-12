@@ -1,5 +1,5 @@
 // group.component.ts
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ContactGroup } from 'src/app/models/ContactGroup';
 import { ContactGroupService } from 'src/app/services/contact-group.service';
@@ -16,13 +16,16 @@ export class GroupComponent implements OnInit {
   @Input() group!: ContactGroup;
   editMode = false;
   selectedContactId: number | undefined;
-  allContacts: Contact[] = []; // Replace 'any' with your actual Contact model
+  allContacts: Contact[] = []; 
+
+
 
   constructor(
     private groupService: ContactGroupService,
     private contactService: ContactService,
     private dialog: MatDialog
   ) {}
+ 
 
   ngOnInit(): void {
     // Fetch all contacts when the component initializes
@@ -67,16 +70,22 @@ export class GroupComponent implements OnInit {
       const selectedContact = this.allContacts.find(
         (contact) => contact.idContact === this.selectedContactId
       );
-
-      // Add the selected contact to the group
-      if (selectedContact) {
+  
+      // Check if the selected contact is not already in the group
+      const contactAlreadyExists = this.group.contacts?.some(
+        (contact) => contact.idContact === this.selectedContactId
+      );
+  
+      // Add the selected contact to the group only if it doesn't already exist
+      if (selectedContact && !contactAlreadyExists) {
         this.group.contacts!.push(selectedContact);
       }
-
+  
       // Reset the selected contact
       this.selectedContactId = undefined;
     }
   }
+  
 
  
 
@@ -92,4 +101,6 @@ export class GroupComponent implements OnInit {
       }
     });
   }
+
+
 }

@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { ContactService } from 'src/app/services/contact.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-contact',
   templateUrl: './add-contact.component.html',
@@ -16,7 +17,8 @@ export class AddContactComponent {
     private dialogRef: MatDialogRef<AddContactComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
-    private contactService: ContactService
+    private contactService: ContactService,
+    private router: Router
 
   ) {
     this.contactForm = this.fb.group({
@@ -34,6 +36,13 @@ export class AddContactComponent {
         console.log('Contact created:', createdContact);
   
         this.dialogRef.close(createdContact);
+
+        // Navigate to the current route to trigger a reload
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+      const currentUrl = this.router.url + '?';
+      this.router.navigateByUrl(currentUrl).then(() => {
+        this.router.navigated = false;
+        this.router.navigate([this.router.url]);});
       });
     }
   }

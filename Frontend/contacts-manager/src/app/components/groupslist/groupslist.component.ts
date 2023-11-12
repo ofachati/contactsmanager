@@ -44,18 +44,15 @@ export class GroupslistComponent  implements OnInit {
   }
   
 
-  addContactToGroup(group: ContactGroup): void {
-    // Implement adding a new contact to the group logic
-  }
+  
 
   openAddGroupDialog(): void {
     const dialogRef = this.dialog.open(AddGroupComponent, {
-      width: '400px', // Adjust the width to fit your design
+      width: '400px', 
     });
   
     dialogRef.afterClosed().subscribe((newGroup: ContactGroup) => {
       if (newGroup) {
-        // Handle the new group as needed, e.g., save it to your data
         this.contactGroups.push(newGroup);
       }
     });
